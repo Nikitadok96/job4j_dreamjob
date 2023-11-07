@@ -16,23 +16,6 @@ public class Candidate {
         this.localDateTime = localDateTime;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
-        Candidate candidate = (Candidate) o;
-        return id == candidate.id && Objects.equals(name, candidate.name) && Objects.equals(description, candidate.description) && Objects.equals(localDateTime, candidate.localDateTime);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id, name, description, localDateTime);
-    }
-
     public int getId() {
         return id;
     }
@@ -63,5 +46,22 @@ public class Candidate {
 
     public void setLocalDateTime(LocalDateTime localDateTime) {
         this.localDateTime = localDateTime;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Candidate candidate = (Candidate) o;
+        return id == candidate.id;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
     }
 }

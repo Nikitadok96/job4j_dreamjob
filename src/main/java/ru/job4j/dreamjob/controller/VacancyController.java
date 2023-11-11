@@ -13,9 +13,9 @@ import ru.job4j.dreamjob.service.VacancyService;
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
 
+@ThreadSafe
 @Controller
 @RequestMapping("/vacancies")
-@ThreadSafe
 public class VacancyController {
     private final VacancyService vacancyService;
 

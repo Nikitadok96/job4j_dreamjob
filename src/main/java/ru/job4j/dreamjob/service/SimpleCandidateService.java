@@ -9,8 +9,8 @@ import ru.job4j.dreamjob.repository.MemoryCandidateRepository;
 import java.util.Collection;
 import java.util.Optional;
 
-@Service
 @ThreadSafe
+@Service
 public class SimpleCandidateService implements CandidateService {
 
     private final CandidateRepository candidateRepository;

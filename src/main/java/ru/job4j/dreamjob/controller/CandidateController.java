@@ -10,9 +10,9 @@ import ru.job4j.dreamjob.repository.MemoryCandidateRepository;
 import ru.job4j.dreamjob.service.CandidateService;
 import ru.job4j.dreamjob.service.SimpleCandidateService;
 
+@ThreadSafe
 @Controller
 @RequestMapping("/candidates")
-@ThreadSafe
 public class CandidateController {
     private final CandidateService candidateService;
 

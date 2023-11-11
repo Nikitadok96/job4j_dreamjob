@@ -13,8 +13,8 @@ import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@Repository
 @ThreadSafe
+@Repository
 public class MemoryVacancyRepository implements VacancyRepository {
 
     private final AtomicInteger nextId = new AtomicInteger(1);
@@ -22,12 +22,12 @@ public class MemoryVacancyRepository implements VacancyRepository {
     private final Map<Integer, Vacancy> vacancies = new ConcurrentHashMap<>();
 
     private MemoryVacancyRepository() {
-        save(new Vacancy(0, "Intern Java Developer", "Intern", LocalDateTime.now()));
-        save(new Vacancy(0, "Junior Java Developer", "Junior", LocalDateTime.now()));
-        save(new Vacancy(0, "Junior+ Java Developer", "Junior+", LocalDateTime.now()));
-        save(new Vacancy(0, "Middle Java Developer", "Middle", LocalDateTime.now()));
-        save(new Vacancy(0, "Middle+ Java Developer", "Middle+", LocalDateTime.now()));
-        save(new Vacancy(0, "Senior Java Developer", "Senior", LocalDateTime.now()));
+        save(new Vacancy(0, "Intern Java Developer", "Intern", LocalDateTime.now(), true));
+        save(new Vacancy(0, "Junior Java Developer", "Junior", LocalDateTime.now(), true));
+        save(new Vacancy(0, "Junior+ Java Developer", "Junior+", LocalDateTime.now(), true));
+        save(new Vacancy(0, "Middle Java Developer", "Middle", LocalDateTime.now(), true));
+        save(new Vacancy(0, "Middle+ Java Developer", "Middle+", LocalDateTime.now(), true));
+        save(new Vacancy(0, "Senior Java Developer", "Senior", LocalDateTime.now(), true));
     }
 
     @Override
@@ -45,8 +45,11 @@ public class MemoryVacancyRepository implements VacancyRepository {
     @Override
     public boolean update(Vacancy vacancy) {
         return vacancies.computeIfPresent(vacancy.getId(), (id, oldVacancy) ->
-                new Vacancy(oldVacancy.getId(), vacancy.getTitle(),
-                        vacancy.getDescription(), vacancy.getLocalDateTime())) != null;
+                new Vacancy(oldVacancy.getId(),
+                        vacancy.getTitle(),
+                        vacancy.getDescription(),
+                        vacancy.getLocalDateTime(),
+                        vacancy.getVisible())) != null;
     }
 
     @Override

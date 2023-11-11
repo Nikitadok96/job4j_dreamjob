@@ -1,13 +1,11 @@
 package ru.job4j.dreamjob.repository;
 
-import net.jcip.annotations.GuardedBy;
 import net.jcip.annotations.ThreadSafe;
 import org.springframework.stereotype.Repository;
 import ru.job4j.dreamjob.model.Vacancy;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ConcurrentHashMap;
@@ -21,7 +19,7 @@ public class MemoryVacancyRepository implements VacancyRepository {
 
     private final Map<Integer, Vacancy> vacancies = new ConcurrentHashMap<>();
 
-    private MemoryVacancyRepository() {
+    public MemoryVacancyRepository() {
         save(new Vacancy(0, "Intern Java Developer", "Intern", LocalDateTime.now(), true));
         save(new Vacancy(0, "Junior Java Developer", "Junior", LocalDateTime.now(), true));
         save(new Vacancy(0, "Junior+ Java Developer", "Junior+", LocalDateTime.now(), true));

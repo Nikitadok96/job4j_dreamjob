@@ -1,13 +1,24 @@
 package ru.job4j.dreamjob.model;
 
 import java.time.LocalDateTime;
+import java.util.Map;
 import java.util.Objects;
 
 public class Candidate {
+
+    public static final Map<String, String> COLUMN_MAPPING = Map.of(
+            "id", "id",
+            "name", "name",
+            "description", "description",
+            "creation_date", "creationDate",
+            "city_id", "cityId",
+            "file_id", "fileId"
+    );
+
     private int id;
     private String name;
     private String description;
-    private LocalDateTime localDateTime = LocalDateTime.now();
+    private LocalDateTime creationDate = LocalDateTime.now();
     private int cityId;
 
     private int fileId;
@@ -16,11 +27,11 @@ public class Candidate {
 
     }
 
-    public Candidate(int id, String name, String description, LocalDateTime localDateTime, int cityId, int fileId) {
+    public Candidate(int id, String name, String description, LocalDateTime creationDate, int cityId, int fileId) {
         this.id = id;
         this.name = name;
         this.description = description;
-        this.localDateTime = localDateTime;
+        this.creationDate = creationDate;
         this.cityId = cityId;
         this.fileId = fileId;
     }
@@ -49,12 +60,12 @@ public class Candidate {
         this.description = description;
     }
 
-    public LocalDateTime getLocalDateTime() {
-        return localDateTime;
+    public LocalDateTime getCreationDate() {
+        return creationDate;
     }
 
-    public void setLocalDateTime(LocalDateTime localDateTime) {
-        this.localDateTime = localDateTime;
+    public void setCreationDate(LocalDateTime creationDate) {
+        this.creationDate = creationDate;
     }
 
     public int getCityId() {

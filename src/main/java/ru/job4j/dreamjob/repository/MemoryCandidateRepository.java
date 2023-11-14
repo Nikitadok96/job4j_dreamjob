@@ -44,7 +44,7 @@ public class MemoryCandidateRepository implements CandidateRepository {
                     value.getId(),
                     candidate.getName(),
                     candidate.getDescription(),
-                    candidate.getLocalDateTime(),
+                    candidate.getCreationDate(),
                     candidate.getCityId(),
                     candidate.getFileId())) != null;
     }

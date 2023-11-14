@@ -46,7 +46,7 @@ public class MemoryVacancyRepository implements VacancyRepository {
                 new Vacancy(oldVacancy.getId(),
                         vacancy.getTitle(),
                         vacancy.getDescription(),
-                        vacancy.getLocalDateTime(),
+                        vacancy.getCreationDate(),
                         vacancy.getVisible(),
                         vacancy.getCityId(),
                         vacancy.getFileId())) != null;
